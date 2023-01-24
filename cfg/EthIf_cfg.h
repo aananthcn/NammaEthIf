@@ -42,7 +42,26 @@ typedef struct {
 
 
 typedef struct {
+        uint16 frametype;
+        uint8 if_owner;
+} EthIf_FrameOwnerConfig;
+
+
+
+#define ETHIF_MAX_FRAMEOWNER_CONFIGS   (2)
+#define ETHIF_MAX_RX_INDCATN_CONFIGS   (2)
+#define ETHIF_MAX_TX_CONFIRM_CONFIGS   (2)
+#define ETHIF_MAX_LNK_ST_CHG_CONFIGS   (2)
+
+
+typedef void (*ethif_fp_type)(void);
+
+typedef struct {
         const EthIfGeneralCfgType general;
+        const EthIf_FrameOwnerConfig *fo_cfg;
+        const ethif_fp_type *rxi_cfg;
+        const ethif_fp_type *txc_cfg;
+        const ethif_fp_type *lsc_cfg;
 } EthIf_ConfigType;
 
 

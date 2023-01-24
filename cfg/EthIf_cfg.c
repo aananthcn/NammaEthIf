@@ -39,7 +39,45 @@ const EthIfGeneralCfgType EthIfGenConfigs = {
 };
 
 
+const EthIf_FrameOwnerConfig EthIfFrameOwnerCfg[ETHIF_MAX_FRAMEOWNER_CONFIGS] = {
+	{
+		.frametype = 0x0000,
+		.if_owner = 0x00
+	},
+	{
+		.frametype = 0x0001,
+		.if_owner = 0x01
+	},
+};
+
+
+
+const ethif_fp_type EthIfRxIndicationConfig[ETHIF_MAX_RX_INDCATN_CONFIGS] = {
+	NULL,
+	NULL,
+};
+
+
+
+const ethif_fp_type EthIfTxConfirmationConfig[ETHIF_MAX_TX_CONFIRM_CONFIGS] = {
+	NULL,
+	NULL,
+};
+
+
+
+const ethif_fp_type EthIfTrcvLinkStateChgConfig[ETHIF_MAX_LNK_ST_CHG_CONFIGS] = {
+	NULL,
+	NULL,
+};
+
+
+
 const EthIf_ConfigType EthIfConfigs = {
         .general = EthIfGenConfigs,
+        .fo_cfg  = EthIfFrameOwnerCfg,
+        .rxi_cfg = EthIfRxIndicationConfig,
+        .txc_cfg = EthIfTxConfirmationConfig,
+        .lsc_cfg = EthIfTrcvLinkStateChgConfig,
 };
 
