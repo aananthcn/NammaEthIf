@@ -39,7 +39,7 @@ const EthIfGeneralCfgType EthIfGenConfigs = {
 };
 
 
-const EthIf_FrameOwnerConfig EthIfFrameOwnerCfg[ETHIF_MAX_FRAMEOWNER_CONFIGS] = {
+const EthIf_FrameOwnerConfigType EthIfFrameOwnerCfg[ETHIF_MAX_FRAMEOWNER_CONFIGS] = {
 	{
 		.frametype = 0x0000,
 		.if_owner = 0x00
@@ -73,7 +73,7 @@ const ethif_fp_type EthIfTrcvLinkStateChgConfig[ETHIF_MAX_LNK_ST_CHG_CONFIGS] = 
 
 
 
-const EthIf_PhysControllerConfig EthIfPhysControllerConfig[ETHIF_MAX_PHYS_CTRLR_CONFIGS] = {
+const EthIf_PhysControllerConfigType EthIfPhysControllerConfig[ETHIF_MAX_PHYS_CTRLR_CONFIGS] = {
 	{
 		.idx = 0,
 		.mn_fn_ms = 100,
@@ -94,11 +94,60 @@ const EthIf_PhysControllerConfig EthIfPhysControllerConfig[ETHIF_MAX_PHYS_CTRLR_
 
 
 
+const EthIf_SwitchConfigType EthIfSwitchConfig[ETHIF_MAX_ETH_SWITCH_CONFIGS] = {
+	{
+		.idx = 0,
+		.swt_ref = NULL,
+	},
+};
+
+
+
+const EthIf_SwitchPortGroupConfigType EthIfSwitchPortGroupConfig[ETHIF_MAX_SWT_PORT_G_CONFIGS] = {
+	{
+		.idx = 0,
+		.port_grp_ref_sem = ETHIF_SWITCH_PORT_GROUP_LINK_INFO,
+		.port_ref = NULL,
+	},
+};
+
+
+
+const EthIf_TransceiverConfigType EthIfTransceiverConfig[ETHIF_MAX_TRANSCEIVR_CONFIGS] = {
+	{
+		.idx = 0,
+		.eth_trcv_ref = NULL,
+		.weth_trcv_ref = NULL,
+	},
+};
+
+
+
+const EthIf_ControllerConfigType EthIfControllerConfig[ETHIF_MAX_CONTROLLER_CONFIGS] = {
+	{
+		.idx = 0,
+		.vlan_id = 0,
+		.mtu = 64,
+		.max_tx_bufs = 1,
+		.pctrlr_ref = NULL,
+		.trcv_ref = NULL,
+		.swt_ref = NULL,
+		.swt_pg_ref = NULL,
+	},
+};
+
+
+
 const EthIf_ConfigType EthIfConfigs = {
         .general = EthIfGenConfigs,
         .fo_cfg  = EthIfFrameOwnerCfg,
         .rxi_cfg = EthIfRxIndicationConfig,
         .txc_cfg = EthIfTxConfirmationConfig,
         .lsc_cfg = EthIfTrcvLinkStateChgConfig,
+        .pctrlr_cfg = EthIfPhysControllerConfig,
+        .swt_cfg = EthIfSwitchConfig,
+        .spg_cfg = EthIfSwitchPortGroupConfig,
+        .trcv_cfg = EthIfTransceiverConfig,
+        .ctrlr_cfg = EthIfControllerConfig,
 };
 

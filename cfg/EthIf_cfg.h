@@ -44,7 +44,7 @@ typedef struct {
 typedef struct {
         uint16 frametype;
         uint8 if_owner;
-} EthIf_FrameOwnerConfig;
+} EthIf_FrameOwnerConfigType;
 
 
 
@@ -55,7 +55,50 @@ typedef struct {
         uint16 mn_fn_ms;
         uint16 rx_ind_iter;
         uint8 idx;
-} EthIf_PhysControllerConfig;
+} EthIf_PhysControllerConfigType;
+
+
+
+typedef struct {
+        void *swt_ref;
+        uint8 idx;
+} EthIf_SwitchConfigType;
+
+
+
+typedef enum {
+	ETHIF_SWITCH_PORT_GROUP_LINK_INFO,
+	ETHIF_SWITCH_PORT_GROUP_SEMANTICS_MAX
+} EthIf_PortGrpRefSemantics_Type;
+
+
+
+typedef struct {
+        void *port_ref;
+        EthIf_PortGrpRefSemantics_Type port_grp_ref_sem;
+        uint8 idx;
+} EthIf_SwitchPortGroupConfigType;
+
+
+
+typedef struct {
+        void *eth_trcv_ref;
+        void *weth_trcv_ref;
+        uint8 idx;
+} EthIf_TransceiverConfigType;
+
+
+
+typedef struct {
+        EthIf_PhysControllerConfigType *pctrlr_ref;
+        EthIf_TransceiverConfigType *trcv_ref;
+        EthIf_SwitchConfigType *swt_ref;
+        EthIf_SwitchPortGroupConfigType *swt_pg_ref;
+        uint32 max_tx_bufs;
+        uint16 mtu;
+        uint16 vlan_id;
+        uint8 idx;
+} EthIf_ControllerConfigType;
 
 
 
@@ -64,16 +107,25 @@ typedef struct {
 #define ETHIF_MAX_TX_CONFIRM_CONFIGS   (2)
 #define ETHIF_MAX_LNK_ST_CHG_CONFIGS   (2)
 #define ETHIF_MAX_PHYS_CTRLR_CONFIGS   (2)
+#define ETHIF_MAX_ETH_SWITCH_CONFIGS   (1)
+#define ETHIF_MAX_SWT_PORT_G_CONFIGS   (1)
+#define ETHIF_MAX_TRANSCEIVR_CONFIGS   (1)
+#define ETHIF_MAX_CONTROLLER_CONFIGS   (1)
 
 
 typedef void (*ethif_fp_type)(void);
 
 typedef struct {
         const EthIfGeneralCfgType general;
-        const EthIf_FrameOwnerConfig *fo_cfg;
+        const EthIf_FrameOwnerConfigType *fo_cfg;
         const ethif_fp_type *rxi_cfg;
         const ethif_fp_type *txc_cfg;
         const ethif_fp_type *lsc_cfg;
+        const EthIf_PhysControllerConfigType *pctrlr_cfg;
+        const EthIf_SwitchConfigType *swt_cfg;
+        const EthIf_SwitchPortGroupConfigType *spg_cfg;
+        const EthIf_TransceiverConfigType *trcv_cfg;
+        const EthIf_ControllerConfigType *ctrlr_cfg;
 } EthIf_ConfigType;
 
 
