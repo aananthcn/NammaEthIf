@@ -48,10 +48,22 @@ typedef struct {
 
 
 
+typedef struct {
+        void *fifo_ref;
+        void *ecc_ref;
+        void *wecc_ref;
+        uint16 mn_fn_ms;
+        uint16 rx_ind_iter;
+        uint8 idx;
+} EthIf_PhysControllerConfig;
+
+
+
 #define ETHIF_MAX_FRAMEOWNER_CONFIGS   (2)
 #define ETHIF_MAX_RX_INDCATN_CONFIGS   (2)
 #define ETHIF_MAX_TX_CONFIRM_CONFIGS   (2)
 #define ETHIF_MAX_LNK_ST_CHG_CONFIGS   (2)
+#define ETHIF_MAX_PHYS_CTRLR_CONFIGS   (2)
 
 
 typedef void (*ethif_fp_type)(void);

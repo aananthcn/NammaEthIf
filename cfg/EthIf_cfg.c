@@ -73,6 +73,27 @@ const ethif_fp_type EthIfTrcvLinkStateChgConfig[ETHIF_MAX_LNK_ST_CHG_CONFIGS] = 
 
 
 
+const EthIf_PhysControllerConfig EthIfPhysControllerConfig[ETHIF_MAX_PHYS_CTRLR_CONFIGS] = {
+	{
+		.idx = 0,
+		.mn_fn_ms = 100,
+		.rx_ind_iter = 0,
+		.fifo_ref = NULL,
+		.ecc_ref = NULL,
+		.wecc_ref = NULL,
+	},
+	{
+		.idx = 1,
+		.mn_fn_ms = 100,
+		.rx_ind_iter = 0,
+		.fifo_ref = NULL,
+		.ecc_ref = NULL,
+		.wecc_ref = NULL,
+	},
+};
+
+
+
 const EthIf_ConfigType EthIfConfigs = {
         .general = EthIfGenConfigs,
         .fo_cfg  = EthIfFrameOwnerCfg,
