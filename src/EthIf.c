@@ -24,3 +24,61 @@
 
 void EthIf_Init(const EthIf_ConfigType* CfgPtr) {
 }
+
+
+// Provides access to a transmit buffer of the specified Ethernet controller
+BufReq_ReturnType EthIf_ProvideTxBuffer(uint8 CtrlIdx, Eth_FrameType FrameType,
+	uint8 Priority,  Eth_BufIdxType* BufIdxPtr, uint8** BufPtr, uint16* LenBytePtr) {
+
+	return Eth_ProvideTxBuffer(CtrlIdx, Priority, BufIdxPtr, BufPtr, LenBytePtr);
+}
+
+
+Std_ReturnType EthIf_Transmit(uint8 CtrlIdx, Eth_BufIdxType BufIdx, Eth_FrameType FrameType,
+		boolean TxConfirmation,  uint16 LenByte, const uint8* PhysAddrPtr) {
+	Std_ReturnType retc = E_NOT_OK;
+
+	return retc;
+}
+
+
+/////////////////////////////
+// Callback functions
+void EthIf_RxIndication(uint8 CtrlIdx, Eth_FrameType FrameType, boolean IsBroadcast,
+	const uint8* PhysAddrPtr, const Eth_DataType* DataPtr, uint16 LenByte) {
+
+}
+
+
+void EthIf_TxConfirmation(uint8 CtrlIdx, Eth_BufIdxType BufIdx, Std_ReturnType Result) {
+
+}
+
+
+/////////////////////////////
+// Scheduled Function
+void EthIf_MainFunctionRx(void) {
+	uint8 ctrlIdx = 0;
+	uint8 fifoIdx = 0; 
+	Eth_RxStatusType RxStatusPtr;
+
+	Eth_Receive(ctrlIdx, fifoIdx, &RxStatusPtr);
+}
+
+
+void EthIf_MainFunctionTx(void) {
+	Std_ReturnType tx_code;
+	uint8 ctrlIdx = 0;
+	Eth_BufIdxType bufIdx;
+	Eth_FrameType frameType;
+	boolean txConfirmation = FALSE;
+	uint16 lenByte = 1;
+	const uint8* PhysAddrPtr = NULL;
+	
+	tx_code = Eth_Transmit(ctrlIdx, bufIdx, frameType, txConfirmation, lenByte, PhysAddrPtr);
+}
+
+
+void EthIf_MainFunctionState(void) {
+
+}

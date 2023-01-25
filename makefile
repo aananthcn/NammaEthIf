@@ -38,7 +38,11 @@ INCDIRS  += -I ${ETHIF_PATH}/src \
 	    -I ${MCU_PATH}/src/common/api \
 	    -I ${MCU_PATH}/src/common/src \
 	    -I ${MCU_STARTUP_PATH} \
-	    -I ${OS_PATH}/include
+	    -I ${OS_PATH}/include \
+	    -I ${ETH_PATH}/api \
+	    -I ${ETH_PATH}/cfg \
+	    -I ${SPI_PATH}/cfg \
+	    -I ${ECUM_PATH}/api
 
 
 $(info  )
