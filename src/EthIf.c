@@ -19,10 +19,12 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 #include <EthIf.h>
+#include <os_api.h> // for pr_log()
 
 
 
 void EthIf_Init(const EthIf_ConfigType* CfgPtr) {
+	pr_log("EthIf init complete!\n");
 }
 
 
