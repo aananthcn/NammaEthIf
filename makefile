@@ -26,7 +26,7 @@ RANLIB=${COMPILER}ranlib
 OBJCOPY=${COMPILER}objcopy
 
 
-include ${ROOT_DIR}/path_defs.mk
+include ${CAR_OS_PATH}/path_defs.mk
 
 
 INCDIRS  += -I ${ETHIF_PATH}/src \
@@ -37,7 +37,9 @@ INCDIRS  += -I ${ETHIF_PATH}/src \
 	    -I ${MCU_PATH}/src/common \
 	    -I ${MCU_PATH}/src/common/api \
 	    -I ${MCU_PATH}/src/common/src \
-	    -I ${MCU_STARTUP_PATH} \
+	    -I ${CAR_OS_INC_PATH}/autosar \
+	    -I ${CAR_OS_INC_PATH}/car_os \
+	    -I ${CAR_OS_BOARDS_PATH} \
 	    -I ${OS_PATH}/include \
 	    -I ${ETH_PATH}/api \
 	    -I ${ETH_PATH}/cfg \
@@ -60,7 +62,7 @@ ASFLAGS := ${INCDIRS} -g
 TARGET 	:= libEthIf.la
 
 # include c_l_flags.mk to add more definitions specific to micro-controller
-include ${ROOT_DIR}/c_l_flags.mk
+include ${CAR_OS_PATH}/c_l_flags.mk
 
 all: $(TARGET)
 
