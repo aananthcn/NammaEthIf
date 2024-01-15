@@ -19,12 +19,16 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 #include <EthIf.h>
-#include <os_api.h> // for pr_log()
+#include <os_api.h> // for LOG_DBG()
+
+
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(EthIf, LOG_LEVEL_DBG);
 
 
 
 void EthIf_Init(const EthIf_ConfigType* CfgPtr) {
-	pr_log("EthIf init complete!\n");
+	LOG_DBG("Init complete!");
 }
 
 
